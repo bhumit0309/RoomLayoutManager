@@ -1,5 +1,7 @@
 package com.andiroot.restousinglibrary.stickerview;
 
+import android.graphics.drawable.Drawable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -11,18 +13,32 @@ public class Position extends RealmObject{
     @PrimaryKey
     private int id;
     private int type;
-    private double x,y;
+    private float angle, x, y;
+    private int height, width;
+    private  boolean isFlippedHorizontally, isFlippedVertically;
 
-    public double getX() {
-        return x;
+    public Position() {
     }
 
-    public double getY() {
-        return y;
+    public Position(int id, int type, float angle, float x, float y, int height, int width, boolean isFlippedHorizontally, boolean isFlippedVertically) {
+        setId(id);
+        setType(type);
+        setAngle(angle);
+        setX(x);
+        setY(y);
+        setHeight(height);
+        setWidth(width);
+        setFlippedHorizontally(isFlippedHorizontally);
+        setFlippedVertically(isFlippedVertically);
     }
 
     public int getId() {
+
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getType() {
@@ -33,16 +49,59 @@ public class Position extends RealmObject{
         this.type = type;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public float getAngle() {
+        return angle;
     }
 
-    public void setX(double x) {
+    public void setAngle(float angle) {
+        this.angle = angle;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
         this.x = x;
     }
 
-    public void setY(double y) {
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
         this.y = y;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public boolean isFlippedHorizontally() {
+        return isFlippedHorizontally;
+    }
+
+    public void setFlippedHorizontally(boolean flippedHorizontally) {
+        isFlippedHorizontally = flippedHorizontally;
+    }
+
+    public boolean isFlippedVertically() {
+        return isFlippedVertically;
+    }
+
+    public void setFlippedVertically(boolean flippedVertically) {
+        isFlippedVertically = flippedVertically;
+    }
 }

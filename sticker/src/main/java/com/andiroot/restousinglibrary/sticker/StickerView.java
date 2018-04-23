@@ -333,6 +333,7 @@ public class StickerView extends FrameLayout {
     oldDistance = calculateDistance(midPoint.x, midPoint.y, downX, downY);
     oldRotation = calculateRotation(midPoint.x, midPoint.y, downX, downY);
 
+    Log.d("Mid-point >>>", midPoint.x + " + " + midPoint.y);
     currentIcon = findCurrentIconTouched();
     if (currentIcon != null) {
       currentMode = ActionMode.ICON;

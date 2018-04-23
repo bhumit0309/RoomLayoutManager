@@ -54,22 +54,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+      <Spinner
+          android:id="@+id/tblChoice"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+      </Spinner>
 
       <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
         android:onClick="testAdd"
         android:text="Add Table"
         />
 
-      <Button
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackground"
-          android:onClick="testaddchair"
-          android:text="Add Chair"
-          />
+      <!--<Button-->
+          <!--android:layout_width="wrap_content"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:onClick="testaddchair"-->
+          <!--android:text="Add Chair"-->
+          <!--/>-->
 
 
 
@@ -78,7 +81,6 @@
       <Button
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackground"
           android:onClick="testRemoveAll"
           android:text="Clear Hall"
           />
@@ -86,7 +88,6 @@
       <Button
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackground"
           android:onClick="testLock"
           android:text="Lock"
           />

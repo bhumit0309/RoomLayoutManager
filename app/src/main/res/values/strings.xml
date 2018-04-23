@@ -1,4 +1,7 @@
 <resources>
-  <string name="app_name">Restaurant Table Booking</string>
-  <string name="text">XX</string>
+    <string name="app_name">Restaurant Table Booking</string>
+    <string name="text">XX</string>
+    <string name="image">sd</string>
+    <string name="title_activity_main_list">MainListActivity</string>
+    <string name="hint">Enter Name</string>
 </resources>

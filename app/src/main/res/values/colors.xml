@@ -5,4 +5,5 @@
   <color name="colorAccent">@android:color/white</color>
 
   <color name="sticker_border">#ff666666</color>
+    <color name="bg_color">#ffffff</color>
 </resources>
