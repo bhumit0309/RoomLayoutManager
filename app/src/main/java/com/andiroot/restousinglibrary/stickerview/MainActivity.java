@@ -121,12 +121,13 @@ public class MainActivity extends AppCompatActivity {
       public void onStickerAdded(@NonNull Sticker sticker)
       {
         sticker1 = sticker;
-        Matrix sizeMatrix = new Matrix();
-        float width = sticker1.getWidth();
-        float height = sticker1.getHeight();
-        sizeMatrix.postTranslate(width,height);
-        sticker1.setMatrix(sizeMatrix);
-          Log.d(TAG, "onStickerAdded | Angle: " + sticker1.getCurrentAngle() + " | X: " + sticker1.getCenterPoint().x + " | Y: " + sticker1.getCenterPoint().y + " | Height: " + sticker1.getHeight() + " | Width: " + sticker1.getWidth() + " | H: " + sticker1.isFlippedHorizontally() + " | V: " + sticker1.isFlippedVertically());
+//        //Matrix sizeMatrix = new Matrix();
+//        float width = sticker1.getWidth();
+//        float height = sticker1.getHeight();
+//        sizeMatrix.postTranslate(width,height);
+//        sticker1.setMatrix(sizeMatrix);
+//        //sticker1.getMatrix().postTranslate(-304, -480);
+          Log.d(TAG, "onStickerAdded | Angle: " + sticker1.getCurrentAngle() + " | X: " + sticker1.getMappedCenterPoint().x + " | Y: " + sticker1.getMappedCenterPoint().y + " | Height: " + sticker1.getCurrentHeight() + " | Width: " + sticker1.getCurrentWidth() + " | H: " + sticker1.isFlippedHorizontally() + " | V: " + sticker1.isFlippedVertically());
 
       }
 
@@ -146,8 +147,22 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void onStickerDragFinished(@NonNull Sticker sticker)
       {
-          Log.d(TAG, "onStickerAdded | Angle: " + sticker1.getCurrentAngle() + " | X: " + sticker1.getCenterPoint().x + " | Y: " + sticker1.getCenterPoint().y + " | Height: " + sticker1.getHeight() + " | Width: " + sticker1.getWidth() + " | H: " + sticker1.isFlippedHorizontally() + " | V: " + sticker1.isFlippedVertically());
+          Log.d(TAG, "onStickerAdded | Angle: " + sticker.getCurrentAngle() + " | X: " + sticker.getMappedCenterPoint().x + " | Y: " + sticker.getMappedCenterPoint().y + " | Height: " + sticker.getCurrentHeight() + " | Width: " + sticker.getCurrentWidth() + " | H: " + sticker.isFlippedHorizontally() + " | V: " + sticker.isFlippedVertically());
           Log.d(TAG, "onStickerDragFinished ");
+
+          position = new Position();
+          position.setId(id);
+          position.setAngle(sticker1.getCurrentAngle());
+          position.setX(sticker1.getMappedCenterPoint().x);
+          position.setY(sticker1.getMappedCenterPoint().y);
+          position.setHeight((int) sticker1.getCurrentHeight());
+          position.setWidth((int) sticker1.getCurrentWidth());
+          position.setFlippedHorizontally(sticker1.isFlippedHorizontally());
+          position.setFlippedVertically(sticker1.isFlippedVertically());
+          position.setType(mTableList.indexOf(sticker1.getDrawable()));
+          realm.beginTransaction();
+          realm.copyToRealmOrUpdate(position);
+          realm.commitTransaction();
 
       }
 
@@ -156,6 +171,21 @@ public class MainActivity extends AppCompatActivity {
       {
           Log.d(TAG, "onStickerAdded | Angle: " + sticker1.getCurrentAngle() + " | X: " + sticker1.getCenterPoint().x + " | Y: " + sticker1.getCenterPoint().y + " | Height: " + sticker1.getHeight() + " | Width: " + sticker1.getWidth() + " | H: " + sticker1.isFlippedHorizontally() + " | V: " + sticker1.isFlippedVertically());
           Log.d(TAG, "onStickerZoomFinished ");
+
+          position = new Position();
+          position.setId(id);
+          position.setAngle(sticker1.getCurrentAngle());
+          position.setX(sticker1.getMappedCenterPoint().x);
+          position.setY(sticker1.getMappedCenterPoint().y);
+          position.setHeight((int) sticker1.getCurrentHeight());
+          position.setWidth((int) sticker1.getCurrentWidth());
+          position.setFlippedHorizontally(sticker1.isFlippedHorizontally());
+          position.setFlippedVertically(sticker1.isFlippedVertically());
+          position.setType(mTableList.indexOf(sticker1.getDrawable()));
+          realm.beginTransaction();
+          realm.copyToRealmOrUpdate(position);
+          realm.commitTransaction();
+
       }
 
 
@@ -164,6 +194,21 @@ public class MainActivity extends AppCompatActivity {
       {
         Log.d(TAG, "onStickerAdded | Angle: " + sticker1.getCurrentAngle() + " | X: " + sticker1.getCenterPoint().x + " | Y: " + sticker1.getCenterPoint().y + " | Height: " + sticker1.getHeight() + " | Width: " + sticker1.getWidth() + " | H: " + sticker1.isFlippedHorizontally() + " | V: " + sticker1.isFlippedVertically());
         Log.d(TAG, "onStickerFlipped");
+
+          position = new Position();
+          position.setId(id);
+          position.setAngle(sticker1.getCurrentAngle());
+          position.setX(sticker1.getMappedCenterPoint().x);
+          position.setY(sticker1.getMappedCenterPoint().y);
+          position.setHeight((int) sticker1.getCurrentHeight());
+          position.setWidth((int) sticker1.getCurrentWidth());
+          position.setFlippedHorizontally(sticker1.isFlippedHorizontally());
+          position.setFlippedVertically(sticker1.isFlippedVertically());
+          position.setType(mTableList.indexOf(sticker1.getDrawable()));
+          realm.beginTransaction();
+          realm.copyToRealmOrUpdate(position);
+          realm.commitTransaction();
+
       }
 
 
@@ -230,10 +275,10 @@ public class MainActivity extends AppCompatActivity {
         position = new Position();
         position.setId(id);
         position.setAngle(sticker1.getCurrentAngle());
-        position.setX(sticker1.getCenterPoint().x);
-        position.setY(sticker1.getCenterPoint().y);
-        position.setHeight(sticker1.getHeight());
-        position.setWidth(sticker1.getWidth());
+        position.setX(sticker1.getMappedCenterPoint().x);
+        position.setY(sticker1.getMappedCenterPoint().y);
+        position.setHeight((int) sticker1.getCurrentHeight());
+        position.setWidth((int) sticker1.getCurrentWidth());
         position.setFlippedHorizontally(sticker1.isFlippedHorizontally());
         position.setFlippedVertically(sticker1.isFlippedVertically());
         position.setType(no);
@@ -298,7 +343,8 @@ public class MainActivity extends AppCompatActivity {
                   ContextCompat.getDrawable(this, R.drawable.sofa);
       }
 
-      stickerView.addSticker(new DrawableSticker(drawable1));
+      stickerView.addStickerFrom(new DrawableSticker(drawable1), position.getHeight(), position.getWidth(), position.getX(), position.getY(), position.getAngle());
+      //stickerView.addSticker(new DrawableSticker(drawable1));
       Log.d("Adding from Realm", "ID: " + position.getId() + " | X/Y: " + position.getX() + "/" + position.getY());
         //Toast.makeText(this, "ID: " + position.getId() + " | X/Y: " + position.getX() + "/" + position.getY(), Toast.LENGTH_SHORT).show();
     }

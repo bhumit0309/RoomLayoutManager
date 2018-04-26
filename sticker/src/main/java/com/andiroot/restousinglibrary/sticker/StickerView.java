@@ -736,6 +736,32 @@ public class StickerView extends FrameLayout {
     invalidate();
   }
 
+
+  public void addStickerFrom(@NonNull Sticker sticker, float height, float width, float x, float y, float angle) {
+    setStickerPosition(sticker, Sticker.Position.CENTER);
+
+    float scaleFactor, widthScaleFactor, heightScaleFactor;
+
+    widthScaleFactor = (float) width / sticker.getDrawable().getIntrinsicWidth();
+    heightScaleFactor = (float) height / sticker.getDrawable().getIntrinsicHeight();
+    scaleFactor = widthScaleFactor > heightScaleFactor ? heightScaleFactor : widthScaleFactor;
+
+    sticker.getMatrix()
+        .postScale(scaleFactor / 2, scaleFactor / 2, getWidth() / 2, getHeight() / 2);
+
+    sticker.getMatrix()
+            .postTranslate(x, y);
+    sticker.getMatrix()
+            .setRotate(angle);
+
+    handlingSticker = sticker;
+    stickers.add(sticker);
+    if (onStickerOperationListener != null) {
+      onStickerOperationListener.onStickerAdded(sticker);
+    }
+    invalidate();
+  }
+
   protected void setStickerPosition(@NonNull Sticker sticker, @Sticker.Position int position) {
     float width = getWidth();
     float height = getHeight();
